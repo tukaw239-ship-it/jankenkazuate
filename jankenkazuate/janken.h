@@ -1,3 +1,5 @@
 #pragma once
 void InitRand();
-int janken();
+int Player();
+int Npc();
+int janken(int Player, int npc);

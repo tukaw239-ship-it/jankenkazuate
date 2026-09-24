@@ -7,31 +7,38 @@ void InitRand()
 	srand((unsigned int)time(NULL));
 }
 
-int player()
+ int Player()
 {
 	int te;
 	cout << "手を入力してください: (0)グー (1)チョキ (2)パー" << endl;
 	cin >> te;
-	te == 0 ? cout << "あなたの手はグーです" << endl : te == 1 ? cout << "あなたの手はチョキです" << endl : cout << "あなたの手はパーです" << endl;
+	if (te == 0) cout << "あなたの手はグーです" << endl;
+	else if (te == 1) cout << "あなたの手はチョキです" << endl;
+	else if (te == 2) cout << "あなたの手はパーです" << endl;
+	else cout << "無効な入力です" << endl;
 	return te;
 }
 
-int janken()
+int Npc()
 {
 	int npc;
 	npc = rand() % 3;
-	npc == 0 ? cout << "グー" << endl : npc == 1 ? cout << "チョキ" << endl : cout << "パー" << endl;
+	if (npc == 0) cout << "NPCの手はグーです" << endl;
+	else if (npc == 1) cout << "NPCの手はチョキです" << endl;
+	else if (npc == 2) cout << "NPCの手はパーです" << endl;
+	else cout << "無効な入力です" << endl;
 	return npc;
 }
 
-int judge(int player, int npc)
+int janken(int te, int npc)
 {
-	if (player == npc)
+	//while
+	if (te == npc)
 	{
 		cout << "あいこです" << endl;
 		return 0;
 	}
-	else if ((player == 0 && npc == 1) || (player == 1 && npc == 2) || (player == 2 && npc == 0))
+	else if ((te == 0 && npc == 1) || (te == 1 && npc == 2) || (te == 2 && npc == 0))
 	{
 		cout << "あなたの勝ちです" << endl;
 		return 1;
@@ -41,4 +48,5 @@ int judge(int player, int npc)
 		cout << "あなたの負けです" << endl;
 		return -1;
 	}
+	return 0;
 }
